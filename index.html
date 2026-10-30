@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WEB EMPIRE · Sistema automatizado de sitios web</title>
+<meta name="description" content="WEB EMPIRE investiga oportunidades de tráfico orgánico, crea sitios originales, los publica y mide sus resultados para mejorarlos.">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236d5efc'/%3E%3Cpath d='M22 30h12l8 28 8-28h0l8 28 8-28h12L72 72H62l-8-26-8 26H36z' fill='white'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0b0d17;--bg2:#121527;--card:#161a2f;--line:#262b4a;
+  --text:#eef0ff;--muted:#9aa1c7;--accent:#6d5efc;--accent2:#22d3b6;
+  --radius:18px;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f7ff;--bg2:#ffffff;--card:#ffffff;--line:#dfe2f5;--text:#14172b;--muted:#5a6085;--accent:#5646ee;--accent2:#0a9f88}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{width:min(1100px,92%);margin:0 auto}
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-weight:800;letter-spacing:.14em;font-size:.95rem}
+.logo span{color:var(--accent2)}
+nav a.cta{font-size:.85rem;text-decoration:none;color:#fff;background:var(--accent);padding:8px 16px;border-radius:999px;font-weight:600}
+.hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% 10% auto;height:420px;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 45%,transparent),transparent);filter:blur(40px);z-index:-1}
+.badge{display:inline-block;font-size:.78rem;font-weight:600;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--accent2);background:var(--bg2);margin-bottom:22px}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;letter-spacing:-.03em;font-weight:800}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:640px;margin:22px auto 0;color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem)}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{text-decoration:none;font-weight:600;padding:13px 24px;border-radius:12px;font-size:.95rem;border:1px solid var(--line);color:var(--text);background:var(--bg2)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),#8a5cff);color:#fff;border-color:transparent}
+section{padding:64px 0}
+.eyebrow{color:var(--accent2);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.02em;margin:8px 0 12px}
+.sub{color:var(--muted);max-width:620px}
+.grid{display:grid;gap:18px;margin-top:36px}
+.steps{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-weight:800;font-size:1.6rem;color:var(--accent);opacity:.9}
+.step h3{margin:8px 0 6px;font-size:1.05rem}
+.step p{color:var(--muted);font-size:.92rem}
+.stack{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.tool .tag{font-size:.72rem;font-weight:700;color:var(--accent2);letter-spacing:.1em;text-transform:uppercase}
+.tool h3{margin:6px 0 6px}
+.tool p{color:var(--muted);font-size:.92rem}
+.band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.timeline{list-style:none;margin-top:30px;border-left:2px solid var(--line);padding-left:26px}
+.timeline li{position:relative;margin-bottom:26px}
+.timeline li::before{content:"";position:absolute;left:-34px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--line)}
+.timeline li.done::before{background:var(--accent2);border-color:var(--accent2)}
+.timeline li.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 25%,transparent)}
+.timeline strong{display:block}
+.timeline span{color:var(--muted);font-size:.92rem}
+.note{margin-top:34px;padding:18px 22px;border-radius:var(--radius);border:1px dashed var(--line);color:var(--muted);font-size:.92rem}
+footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+@media (max-width:560px){.hero{padding:64px 0 48px}section{padding:44px 0}nav a.cta{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Principal">
+      <div class="logo">WEB<span>EMPIRE</span></div>
+      <a class="cta" href="#estado">Ver estado</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <span class="badge">Prueba de concepto · Fase 1</span>
+    <h1>Sitios web que se <em>investigan, publican y mejoran</em> solos</h1>
+    <p class="lead">WEB EMPIRE es un sistema automatizado que detecta oportunidades de tráfico orgánico, crea sitios originales, los publica y mide su rendimiento para decidir qué mejorar.</p>
+    <div class="actions">
+      <a class="btn primary" href="#ciclo">Cómo funciona</a>
+      <a class="btn" href="#stack">Tecnología</a>
+    </div>
+  </div>
+
+  <section id="ciclo" class="band">
+    <div class="wrap">
+      <div class="eyebrow">El ciclo</div>
+      <h2>Cinco pasos, un bucle continuo</h2>
+      <p class="sub">Cada vuelta del ciclo deja datos que hacen mejor a la siguiente.</p>
+      <div class="grid steps">
+        <article class="step"><h3>Investigar</h3><p>Búsqueda de nichos y palabras clave con poca competencia y análisis de lo que ya posiciona.</p></article>
+        <article class="step"><h3>Decidir</h3><p>Priorización de oportunidades según potencial de tráfico y esfuerzo de creación.</p></article>
+        <article class="step"><h3>Crear</h3><p>Generación de sitios originales, rápidos y útiles para una necesidad real de búsqueda.</p></article>
+        <article class="step"><h3>Publicar</h3><p>Cada cambio se guarda en un repositorio y se despliega de forma automática.</p></article>
+        <article class="step"><h3>Medir</h3><p>Seguimiento de visitas y resultados para reforzar lo que funciona y descartar lo que no.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="eyebrow">Tecnología</div>
+      <h2>Una arquitectura pensada para empezar con coste cero</h2>
+      <p class="sub">Cada pieza cubre una función concreta y puede sustituirse sin romper el resto.</p>
+      <div class="grid stack">
+        <div class="tool"><div class="tag">Investigación</div><h3>Firecrawl</h3><p>Búsqueda web y extracción de contenido para analizar el mercado.</p></div>
+        <div class="tool"><div class="tag">Código</div><h3>GitHub</h3><p>Historial versionado de cada sitio y de cada cambio realizado.</p></div>
+        <div class="tool"><div class="tag">Publicación</div><h3>Netlify</h3><p>Despliegue continuo: cada commit actualiza el sitio publicado.</p></div>
+        <div class="tool"><div class="tag">Memoria</div><h3>Supabase</h3><p>Base de datos para nichos, páginas, despliegues y métricas.</p></div>
+        <div class="tool"><div class="tag">Conexión</div><h3>Zapier</h3><p>Puente entre herramientas para ejecutar acciones reales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estado" class="band">
+    <div class="wrap">
+      <div class="eyebrow">Estado del proyecto</div>
+      <h2>Hoja de ruta</h2>
+      <ul class="timeline">
+        <li class="done"><strong>Auditoría de herramientas</strong><span>Capacidades de cada servicio comprobadas con pruebas reales.</span></li>
+        <li class="now"><strong>Primera publicación</strong><span>Esta página: prueba de la cadena repositorio → despliegue.</span></li>
+        <li><strong>Memoria del sistema</strong><span>Base de datos para registrar nichos, sitios y resultados.</span></li>
+        <li><strong>Primer sitio de nicho</strong><span>Un proyecto pequeño y útil para medir tráfico real.</span></li>
+        <li><strong>Bucle de mejora</strong><span>Decisiones basadas en datos, no en suposiciones.</span></li>
+      </ul>
+      <p class="note">Esta página es una prueba técnica de despliegue. El proyecto está en construcción y aún no hay resultados de tráfico que mostrar.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">WEB EMPIRE · Proyecto en desarrollo · Página estática sin dependencias externas</div>
+</footer>
+</body>
+</html>
